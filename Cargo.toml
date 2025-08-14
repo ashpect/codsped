@@ -1,0 +1,13 @@
+[package]
+name = "codsped"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[dev-dependencies]
+divan = { version = "3.0.5", package = "codspeed-divan-compat" }
+
+[[bench]]
+name = "benchmark"
+harness = false
