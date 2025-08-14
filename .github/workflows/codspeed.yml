@@ -25,10 +25,12 @@ jobs:
 
       - name: Build the benchmark target(s)
         run: cargo codspeed build
-      
+
+      - name: Check codspeed binary
+        run: which cargo-codspeed || echo "cargo-codspeed not found in PATH"
+
       - name: Run the benchmarks
-        run: |
-          test -f /usr/local/bin/codspeed-post-bench && echo "File exists" || echo "File does not exist"
-          cargo codspeed run
-        env:
-          CODSPEED_TOKEN: ${{ secrets.CODSPEED_TOKEN }}
+        uses: CodSpeedHQ/action@v3
+        with:
+          run: cargo codspeed run
+          token: ${{ secrets.CODSPEED_TOKEN }}
