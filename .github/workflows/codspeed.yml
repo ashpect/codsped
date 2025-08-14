@@ -25,6 +25,9 @@ jobs:
 
       - name: Build the benchmark target(s)
         run: cargo codspeed build
+      
+      - name: Testing 
+        run: test -f /usr/local/bin/codspeed-post-bench && echo "File exists" || echo "File does not exist"
 
       - name: Run the benchmarks
         uses: CodSpeedHQ/action@v3
